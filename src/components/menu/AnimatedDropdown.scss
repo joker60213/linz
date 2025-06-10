@@ -1,0 +1,83 @@
+@import '@/styles/variables';
+
+.animated-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 12px;
+  background-color: $menu-hover-color;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(5px);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      opacity: 0;
+      animation: dropdownEntry 0.4s forwards;
+      transform: translateY(-15px);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    // Задержка анимации для "пианино"
+    @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+        animation-delay: 0.1s * $i;
+        }
+    }
+
+      // Взлёт при наведении
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      a {
+        display: block;
+        width: 180px;
+        white-space: nowrap;
+        text-align: left;
+        padding: 8px 16px;
+        font-size: 14px;
+        color: var(--ant-color-text);
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+          color: $logo-hover-color;
+        }
+      }
+    }
+  }
+}
+
+@keyframes dropdownEntry {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

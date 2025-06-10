@@ -1,5 +1,7 @@
+@import '@/styles/variables';
+
 .app-header {
-  background-color: transparent;
+  background-color: $layout-bg-color;
   padding: 0 24px;
 }
 
@@ -16,9 +18,46 @@
   font-weight: bold;
   font-size: 18px;
   text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $logo-hover-color;
+  }
 }
 
-.app-header__menu {
-  background: transparent;
-  border-bottom: none;
+.app-header__icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: invert(100%);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.app-header__menu-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.app-header__menu-trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: 32px;
+    filter: invert(100%);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
 }

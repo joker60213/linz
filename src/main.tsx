@@ -7,13 +7,14 @@ import { ConfigProvider, theme as antdTheme } from 'antd'
 
 const Root = () => {
   return (
-    <ConfigProvider
+    //управляет стилем компонентов Ant Design
+    <ConfigProvider 
       theme={{
         algorithm: antdTheme.darkAlgorithm,
         token: {
-          colorPrimary: '#1677ff',
-          colorBgBase: '#1a1a1a',
-          colorText: '#f5f5f5',
+          colorPrimary: '#1677ff',  // синий — кнопки, активные элементы
+          colorBgBase: '#1a1a1a', // фон страницы
+          colorText: '#f5f5f5', // текст по умолчанию
           fontFamily: 'Inter, sans-serif',
         },
       }}
