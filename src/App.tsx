@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import AppLayout from './components/layout/Layout'
 import ContactsPage from './pages/ContactsPage'
+import SelectPage from './pages/SelectPage'
 
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/select" element={<SelectPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

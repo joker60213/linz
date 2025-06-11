@@ -37,3 +37,22 @@ a {
     color: $logo-hover-color !important;
   }
 }
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  color: var(--ant-color-text);
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+}
+
