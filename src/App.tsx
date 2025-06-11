@@ -5,6 +5,8 @@ import AppLayout from './components/layout/Layout'
 import ContactsPage from './pages/ContactsPage'
 import SelectPage from './pages/SelectPage'
 import DeliveryPage from './pages/DeliveryPage'
+import CartPage from './pages/CartPage'
+import ProductPage from './pages/ProductPage'
 
 const App = () => {
 
@@ -17,6 +19,8 @@ const App = () => {
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/select" element={<SelectPage />} />
           <Route path="/delivery" element={<DeliveryPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
