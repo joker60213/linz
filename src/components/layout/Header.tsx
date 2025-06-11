@@ -32,9 +32,14 @@ const AppHeader = () => {
           Линзы
         </Link>
 
-        <Link to="/select" className="app-header__select-btn">
-          Подбор линз
-        </Link>
+        <div className="app-header__actions">
+          <Link to="/select" className="app-header__select-btn">
+            Подбор линз
+          </Link>
+          <Link to="/delivery" className="app-header__select-btn">
+            Доставка и оплата
+          </Link>
+        </div>
 
         {/* Выпадающее меню с иконкой */}
         <div

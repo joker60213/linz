@@ -4,6 +4,7 @@ import AboutPage from './pages/AboutPage'
 import AppLayout from './components/layout/Layout'
 import ContactsPage from './pages/ContactsPage'
 import SelectPage from './pages/SelectPage'
+import DeliveryPage from './pages/DeliveryPage'
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/select" element={<SelectPage />} />
+          <Route path="/delivery" element={<DeliveryPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

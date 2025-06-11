@@ -75,3 +75,9 @@
     background-color: darken($primary-color, 10%);
   }
 }
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

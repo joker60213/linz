@@ -34,16 +34,21 @@
 
     li {
       opacity: 0;
-      animation: dropdownEntry 0.4s forwards;
+      animation: none;
       transform: translateY(-15px);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+      
+  &.animate {
+    animation: dropdownEntry 0.4s forwards;
+  }
+
     // Задержка анимации для "пианино"
-    @for $i from 1 through 20 {
-        &:nth-child(#{$i}) {
-        animation-delay: 0.1s * $i;
-        }
+  @for $i from 1 through 20 {
+    &.animate:nth-child(#{$i}) {
+      animation-delay: 0.1s * $i;
     }
+  }
 
       // Взлёт при наведении
       &:hover {
