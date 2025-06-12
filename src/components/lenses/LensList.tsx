@@ -1,4 +1,5 @@
-import type { Lens } from '../types'
+import { Row, Col } from 'antd'
+import type { Lens } from '../types' 
 import LensCard from './LensCard'
 
 type Props = {
@@ -8,11 +9,13 @@ type Props = {
 
 const LensList = ({ lenses, onAddToCart }: Props) => {
   return (
-    <div style={{ marginTop: '2rem' }}>
+    <Row gutter={[16, 16]} style={{ marginTop: '2rem' }}>
       {lenses.map(lens => (
-        <LensCard key={lens.id} lens={lens} onAddToCart={onAddToCart} />
+        <Col span={8} key={lens.id}>
+          <LensCard lens={lens} onAddToCart={onAddToCart} />
+        </Col>
       ))}
-    </div>
+    </Row>
   )
 }
 

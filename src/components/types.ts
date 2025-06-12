@@ -1,8 +1,9 @@
-export interface Lens {
+export type Lens = {
   id: string
   brand: string
-  sph: string
-  cyl?: string
-  axis?: string
+  sph: number
+  cyl?: number
+  axis?: number
   diameter?: number
+  uniqueId?: string
 }

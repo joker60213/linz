@@ -21,6 +21,7 @@ const App = () => {
           <Route path="/delivery" element={<DeliveryPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/cart" element={<CartPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
