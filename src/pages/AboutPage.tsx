@@ -1,6 +1,9 @@
+import BackButton from "../components/utils/BackButton"
+
 const AboutPage = () => {
   return (
     <div className="page-content">
+      <BackButton />
       <h1>О проекте “Линзы”</h1>
       <p>
         Это онлайн-платформа, которая помогает пользователям подобрать подходящие линзы по рецепту от офтальмолога.
