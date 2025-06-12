@@ -3,4 +3,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
+.cart-select-all {
+  margin-bottom: 1.5rem;
 }

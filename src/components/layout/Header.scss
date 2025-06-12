@@ -1,8 +1,15 @@
 @import '@/styles/variables';
 
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background-color: $layout-bg-color;
   padding: 0 24px;
+  transition: box-shadow 0.3s ease;
+
+  // Тень при прокрутке
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .app-header__container {
