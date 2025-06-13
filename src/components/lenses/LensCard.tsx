@@ -19,7 +19,7 @@ const LensCard = ({ lens, onAddToCart }: Props) => {
     <p><strong>SPH:</strong> {lens.sph}</p>
     <p><strong>CYL:</strong> {lens.cyl}</p>
     <p><strong>AXIS:</strong> {lens.axis}</p>
-    <p><strong>Диаметр:</strong> {lens.diameter} мм</p>
+    <p><strong>Диаметр:</strong> {lens.diameter!} мм</p>
   </div>
 
   <div className="lens-card-buttons">

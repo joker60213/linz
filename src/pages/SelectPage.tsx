@@ -50,10 +50,10 @@ const SelectPage = () => {
         const dia = values[`dia${side}`]
 
         return (
-          (sph === undefined || parseFloat(lens.sph) === parseFloat(sph.toFixed(2))) &&
-          (cyl === undefined || parseFloat(lens.cyl) === parseFloat(cyl.toFixed(2))) &&
-          (axis === undefined || parseInt(lens.axis) === axis) &&
-          (dia === undefined || parseFloat(lens.diameter.toFixed(2)) === dia)
+          (sph === undefined || Number(lens.sph) === Number(sph)) &&
+          (cyl === undefined || Number(lens.cyl) === Number(cyl)) &&
+          (axis === undefined || Number(lens.axis) === axis) &&
+          (dia === undefined || Number(lens.diameter) === Number(dia))
         )
       })
     }
@@ -63,11 +63,11 @@ const SelectPage = () => {
     setShowResults(hasLeftEyeValues || hasRightEyeValues)
   }
 
-const watchedValues = Form.useWatch([], form)
+  const watchedValues = Form.useWatch([], form)
 
-useEffect(() => {
-  onSearch(watchedValues || {})
-}, [watchedValues])
+  useEffect(() => {
+    onSearch(watchedValues || {})
+  }, [watchedValues])
 
 
   const onReset = () => {

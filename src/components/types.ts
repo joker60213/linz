@@ -4,6 +4,6 @@ export type Lens = {
   sph: number
   cyl?: number
   axis?: number
-  diameter?: number
+  diameter: number
   uniqueId?: string
 }
