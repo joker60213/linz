@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import type { Lens } from '../components/types'
 import { mockLenses } from '../mock/lenses'
+import BackButton from "../components/utils/BackButton"
 
 const ProductPage = () => {
   const { id } = useParams()
@@ -10,6 +11,7 @@ const ProductPage = () => {
 
   return (
     <div className="page-content">
+      <BackButton />
       <h1>{lens.brand}</h1>
       <p><strong>SPH:</strong> {lens.sph}</p>
       <p><strong>CYL:</strong> {lens.cyl}</p>

@@ -4,8 +4,10 @@ import { removeFromCartByIndex, clearCart } from '../store/cartSlice'
 import { Button, Checkbox } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import BackButton from "../components/utils/BackButton"
+
 import './CartPage.scss'
-import './DustFade.scss'
+import '../components/menu/DustFade.scss'
 
 const CartPage = () => {
   const dispatch = useDispatch()
@@ -55,6 +57,7 @@ const CartPage = () => {
 
 return (
   <div className="page-content">
+          <BackButton />
     <div className="cart-header">
       <h1>Корзина</h1>
       <div className="cart-header__actions">

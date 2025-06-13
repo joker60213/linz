@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { sendOrderToTelegram } from '../components/utils/sendTelegram'
 import { useDispatch } from 'react-redux'
 import { removeManyByIndexes } from '../store/cartSlice'
+import BackButton from "../components/utils/BackButton"
+
 import dayjs from 'dayjs'
 
 const CheckoutPage = () => {
@@ -48,6 +50,7 @@ ${selectedItems.map((item: any, i: number) => `  ${i + 1}. ${item.brand} — SPH
 
   return (
     <div className="page-content">
+      <BackButton />
       <h1>Оформление заказа</h1>
 
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
