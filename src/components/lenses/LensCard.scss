@@ -1,13 +1,24 @@
+.lens-card {
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; // гарантирует растяжение карточки
+}
+
+.lens-card-buttons {
+  margin-top: auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap; // позволит переносить кнопку, если не хватает места
+}
+
 .lens-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.lens-card-buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+  flex-grow: 1;
 }

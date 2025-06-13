@@ -1,7 +1,7 @@
 import { Row, Col } from 'antd'
-import type { Lens } from '../types' 
+import type { Lens } from '../types'
 import LensCard from './LensCard'
-import './LensList.scss' // если ты добавил туда анимацию
+import './LensList.scss'
 
 type Props = {
   lenses: Lens[]
@@ -13,14 +13,16 @@ const LensList = ({ lenses, onAddToCart }: Props) => {
     <Row gutter={[16, 16]} style={{ marginTop: '2rem' }}>
       {lenses.map((lens, index) => (
         <Col
-          span={24}
+          xs={24}
+          sm={12}
+          md={8}
           key={lens.id}
           className="lens-card-animated"
-          style={{ 
+          style={{
             animationDelay: `${index * 0.09}s`,
-            maxWidth: 280,
-            margin: '0 auto' // отцентровать
-        }}
+            display: 'flex', // чтобы Card растягивался
+            justifyContent: 'center'
+          }}
         >
           <LensCard lens={lens} onAddToCart={onAddToCart} />
         </Col>
