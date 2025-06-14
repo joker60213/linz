@@ -17,21 +17,23 @@ const CheckoutPage = () => {
   const [form] = Form.useForm()
   const dispatch = useDispatch()
 
+  const sendEmailCopy = Form.useWatch('sendEmailCopy', form)
+
   const handleSubmit = async (values: any) => {
     const now = dayjs().format('DD.MM.YYYY HH:mm')
 
     const orderMessage = `
-🛒 *Новый заказ* (${now})
-📞 Телефон: ${values.phone || '—'}
-💬 Telegram: ${values.telegram}
-📦 Способ получения: ${method === 'pickup' ? 'Самовывоз' : 'Доставка'}
-${method === 'delivery' ? `🏠 Адрес: ${values.address}` : ''}
+      🛒 *Новый заказ* (${now})
+      📞 Телефон: ${values.phone || '—'}
+      💬 Telegram: ${values.telegram}
+      📦 Способ получения: ${method === 'pickup' ? 'Самовывоз' : 'Доставка'}
+      ${method === 'delivery' ? `🏠 Адрес: ${values.address}` : ''}
 
-📝 Комментарий: ${values.comment || '—'}
+      📝 Комментарий: ${values.comment || '—'}
 
-📋 Товары:
-${selectedItems.map((item: any, i: number) => `  ${i + 1}. ${item.brand} — SPH: ${item.sph}`).join('\n')}
-    `.trim()
+      📋 Товары:
+      ${selectedItems.map((item: any, i: number) => `  ${i + 1}. ${item.brand} — SPH: ${item.sph}`).join('\n')}
+          `.trim()
 
     try {
       await sendOrderToTelegram(orderMessage)
@@ -40,6 +42,20 @@ ${selectedItems.map((item: any, i: number) => `  ${i + 1}. ${item.brand} — SPH
         const userChatId = values.telegram.trim().replace('@', '')
         await sendOrderToTelegram(orderMessage, userChatId)
       }
+
+    if (values.sendEmailCopy && values.email) {
+      try {
+        const existing = JSON.parse(localStorage.getItem('emailOrders') || '[]')
+        const newEntry = {
+          email: values.email,
+          message: orderMessage,
+          timestamp: now,
+        }
+        localStorage.setItem('emailOrders', JSON.stringify([...existing, newEntry]))
+      } catch (error) {
+        console.error('Ошибка при сохранении email в localStorage:', error)
+      }
+    }
 
       dispatch(removeManyByIndexes(selectedIndexes))
       navigate('/')
@@ -94,9 +110,40 @@ ${selectedItems.map((item: any, i: number) => `  ${i + 1}. ${item.brand} — SPH
           </Form.Item>
         )}
 
-        <Form.Item name="sendCopy" valuePropName="checked">
+        {/* это вертикальное расположение */}
+        {/* <Form.Item name="sendCopy" valuePropName="checked">
           <Checkbox>Получить копию себе в Telegram</Checkbox>
         </Form.Item>
+
+        <Form.Item name="sendEmailCopy" valuePropName="checked">
+          <Checkbox>Получить копию себе на Email</Checkbox>
+        </Form.Item> */}
+
+        {/* это горизонтальное расположение */}
+        <Form.Item>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
+            <Form.Item name="sendCopy" valuePropName="checked" noStyle>
+              <Checkbox>Получить копию в Telegram</Checkbox>
+            </Form.Item>
+
+            <Form.Item name="sendEmailCopy" valuePropName="checked" noStyle>
+              <Checkbox>Получить копию на Email</Checkbox>
+            </Form.Item>
+          </div>
+        </Form.Item>
+
+        {sendEmailCopy && (
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[
+              { required: true, message: 'Введите Email для получения копии' },
+              { type: 'email', message: 'Введите корректный Email' },
+            ]}
+          >
+            <Input placeholder="example@mail.com" />
+          </Form.Item>
+        )}
 
         <Button type="primary" htmlType="submit">
           Отправить заказ

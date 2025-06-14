@@ -8,6 +8,7 @@ import DeliveryPage from './pages/DeliveryPage'
 import CartPage from './pages/CartPage'
 import ProductPage from './pages/ProductPage'
 import CheckoutPage from './pages/CheckoutPage'
+import DevEmailsPage from './pages/DevEmailsPage'
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/dev-emails" element={<DevEmailsPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
