@@ -19,6 +19,8 @@ const CheckoutPage = () => {
 
   const sendEmailCopy = Form.useWatch('sendEmailCopy', form)
 
+  const agreementAccepted = Form.useWatch('agreement', form)
+
   const handleSubmit = async (values: any) => {
     const now = dayjs().format('DD.MM.YYYY HH:mm')
 
@@ -145,7 +147,27 @@ const CheckoutPage = () => {
           </Form.Item>
         )}
 
-        <Button type="primary" htmlType="submit">
+        <Form.Item
+          name="agreement"
+          valuePropName="checked"
+          rules={[
+            {
+              validator: (_, value) =>
+                value
+                  ? Promise.resolve()
+                  : Promise.reject(new Error('Необходимо дать согласие')),
+            },
+          ]}
+        >
+          <Checkbox>
+            Я даю согласие на обработку моих персональных данных в соответствии с{' '}
+            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+              Политикой конфиденциальности
+            </a>
+          </Checkbox>
+        </Form.Item>
+
+        <Button type="primary" htmlType="submit" disabled={!agreementAccepted}>
           Отправить заказ
         </Button>
       </Form>

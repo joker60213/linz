@@ -9,6 +9,7 @@ import CartPage from './pages/CartPage'
 import ProductPage from './pages/ProductPage'
 import CheckoutPage from './pages/CheckoutPage'
 import DevEmailsPage from './pages/DevEmailsPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/dev-emails" element={<DevEmailsPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
